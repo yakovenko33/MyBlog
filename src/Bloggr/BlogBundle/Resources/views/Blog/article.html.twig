@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                <div class="col-lg-12 text-center">
+                    <img class="img-responsive img-border img-full" src="{{ asset(['img/', blog.image]|join) }}" alt="">
+                    <h2>{{ blog.title }}
+                        <br>
+                        <small>{{ blog.created|date('l, F j, Y') }}</small>
+                    </h2>
+                    <p>{{ blog.blog}}</p>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

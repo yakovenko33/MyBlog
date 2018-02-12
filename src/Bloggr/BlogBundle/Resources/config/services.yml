@@ -1,0 +1,4 @@
+services:
+    blog.service:
+        class: Bloggr\BlogBundle\Service\BlogService
+
