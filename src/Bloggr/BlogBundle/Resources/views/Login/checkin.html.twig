@@ -1,0 +1,30 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="box">
+            <hr>
+            <h2 class="intro-text text-center">Check In
+                <strong>form</strong>
+            </h2>
+            <hr>
+
+            {{ form_start(form, { 'action': path('check_in'), 'method': 'POST', 'attr': {'class': 'form-group col-lg-4 '} }) }}
+
+            {{ form_errors(form) }}
+
+            {{ form_row(form.username , {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.email,  {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.password.first, {'attr': {'class': 'form-control'}}) }}
+            {{ form_row(form.password.second, {'attr': {'class': 'form-control'}}) }}
+
+            {{ form_row(form.submit,  {'attr': {'class': 'btn btn-default'}}) }}
+
+
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
