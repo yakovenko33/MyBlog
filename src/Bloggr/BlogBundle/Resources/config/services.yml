@@ -1,4 +1,4 @@
 services:
-    blog.service:
-        class: Bloggr\BlogBundle\Service\BlogService
-
+    user.service:
+        class: Bloggr\BlogBundle\Service\UserService
+        arguments: ["@doctrine.orm.entity_manager","@security.password_encoder"]

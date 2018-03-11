@@ -2,6 +2,7 @@
 
 namespace Bloggr\BlogBundle\Controller;
 
+use Symfony\Component\Form\FormError;
 use  Bloggr\BlogBundle\Entity\User;
 use  Bloggr\BlogBundle\Entity\Role;
 use Bloggr\BlogBundle\Form\UserType;
@@ -16,31 +17,17 @@ class LoginController extends Controller
     /**
      * @Route("/Login", name="login")
      */
-    public function LoginAction()
+    public function LoginAction(Request $request)
     {
-        /*$em = $this->getDoctrine()->getManager();
-        $role = new Role();
-        $role->setRole('ROLE_ADMIN');
+        $authenticationUtils = $this->get('security.authentication_utils');
 
-        $user = new User();
-        $user->setUsername('Vlad Yakovenko');
-        $user->setEmail('botvot33@gmail.com');
-        $user->setPassword('123ert678');
-        $user->setSalt('876tre321');
+        $error = $authenticationUtils->getLastAuthenticationError();
 
-
-        $user->addRole($role);
-
-        $em->persist($role);
-        $em->persist($user);
-        $em->flush();*/
-
-
-
-
+        $lastUsername = $authenticationUtils->getLastUsername();
 
         return $this->render('BlogBundle:Login:login.html.twig', array(
-
+            'last_username' => $lastUsername,
+            'error'         => $error,
         ));
     }
 
@@ -50,34 +37,43 @@ class LoginController extends Controller
     public function CheckInAction(Request $request)
     {
 
-       /*$productId = 1;
-
-        $user = $this->getDoctrine()
-            ->getRepository(User::class)
-            ->find($productId);
-
-        $categoryName = $user->getRoles();
-        foreach ($categoryName as $role){
-            print_r($user->getUsername());
-        print_r( $role->getRole());
-        }*/
-
         $user = new User();
+        $role = new Role();
+
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // $form->getData() holds the submitted values
-            // but, the original `$task` variable has also been updated
-            $task = $form->getData();
+           $form->getData();
 
-            // ... perform some action, such as saving the task to the database
-            // for example, if Task is a Doctrine entity, save it!
-            // $em = $this->getDoctrine()->getManager();
-            // $em->persist($task);
-            // $em->flush();
 
-            return $this->redirectToRoute('BlogBundle:Login:login.html.twig');
+            $repository = $this->getDoctrine()->getRepository(User::class);
+
+            $userName = $repository->findOneBy(array('username' => $user->getUsername()));
+            $email = $repository->findOneBy(array('email' => $user->getEmail()));
+
+            if(!is_null($userName)){
+                $form->addError(new FormError('Такое имя пользователя занят!'));
+                return $this->render('BlogBundle:Login:checkin.html.twig', array(
+                    'form' => $form->createView()
+                ));
+            }
+
+            if(!is_null($email)){
+                $form->addError(new FormError('Такой email  занято!'));
+                return $this->render('BlogBundle:Login:checkin.html.twig', array(
+                    'form' => $form->createView()
+                ));
+            }
+
+
+            $this->get('user.service')->coderPassword($user, $role);
+
+             $em = $this->getDoctrine()->getManager();
+             $em->persist($user);
+             $em->flush();
+
+            return $this->redirectToRoute('login');
         }
 
 

@@ -3,6 +3,8 @@
 namespace Bloggr\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\Security\Core\Role\RoleInterface;
 
 /**
  * Role
@@ -10,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="role")
  * @ORM\Entity(repositoryClass="Bloggr\BlogBundle\Repository\RoleRepository")
  */
-class Role
+class Role implements RoleInterface
 {
     /**
      * @var int

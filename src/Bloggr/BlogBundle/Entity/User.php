@@ -4,6 +4,7 @@ namespace Bloggr\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
@@ -11,7 +12,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="Bloggr\BlogBundle\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @var int
@@ -79,6 +80,7 @@ class User
     public function __construct()
     {
         $this->createdAt = new \DateTime();
+        $this->salt = md5(uniqid());
         $this->laastLoginAt = new \DateTime();
         $this->role = new ArrayCollection();
     }
@@ -233,11 +235,16 @@ class User
 
     public function addRole(Role $role){
         $this->role->add($role);
-        return  $this->role;
+        return  $this;
     }
 
     public function getRoles()
     {
         return $this->role->toArray();
+    }
+
+    public function eraseCredentials()
+    {
+        ;
     }
 }
