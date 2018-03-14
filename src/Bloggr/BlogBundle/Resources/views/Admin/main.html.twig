@@ -1,0 +1,28 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="box">
+                <hr>
+                <h2 class="intro-text text-center">Main
+                    <strong>Menu</strong>
+                </h2>
+                <hr>
+
+
+                <div class="col align-self-center">
+                    <a class="btn btn-primary" href="{{ path('admin') }}" role="button">Main menu</a>
+                    <a class="btn btn-primary" href="{{ path('admin_add_news') }}" role="button">Add news</a>
+                    <a class="btn btn-primary" href="{{ path('admin_deleted') }}" role="button">Delete news</a>
+                    <a class="btn btn-primary" href="{{ path('admin_edit') }}" role="button">Edit news</a>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

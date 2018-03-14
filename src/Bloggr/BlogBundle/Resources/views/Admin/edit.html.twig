@@ -5,12 +5,19 @@
         <div class="row">
             <div class="box">
                 <hr>
-                <h2 class="intro-text text-center">Add
+                <h2 class="intro-text text-center">Edit
                     <strong>News</strong>
                 </h2>
                 <hr>
 
-                {{ form_start(form, { 'action': path('admin'), 'method': 'POST', 'attr': {'class': 'form-group col-lg-4' } }) }}
+                <div class="col align-self-center">
+                    <a class="btn btn-primary" href="{{ path('admin') }}" role="button">Main menu</a>
+                    <a class="btn btn-primary" href="{{ path('admin_add_news') }}" role="button">Add news</a>
+                    <a class="btn btn-primary" href="{{ path('admin_deleted') }}" role="button">Delete news</a>
+                    <a class="btn btn-primary" href="{{ path('admin_edit') }}" role="button">Edit news</a>
+                </div>
+
+                {{ form_start(form, { 'action': path('admin_edit'), 'method': 'POST', 'attr': {'class': 'form-group col-lg-4' } }) }}
 
                 {{ form_errors(form) }}
 
@@ -24,11 +31,11 @@
 
                 {{ form_row(form.tags,  {'attr': {'class': 'form-control'}}) }}
 
-                {{ form_row(form.created,  {'attr': {'class': 'form-control'}}) }}
+
 
                 {{ form_rest(form) }}
                 <button type="submit" class="btn btn-default">Signup</button>
-                
+
                 {{ form_end(form) }}
 
             </div>
