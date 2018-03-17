@@ -17,7 +17,7 @@
                     <a class="btn btn-primary" href="{{ path('admin_edit') }}" role="button">Edit news</a>
                 </div>
 
-                {{ form_start(form, { 'action': path('admin_edit'), 'method': 'POST', 'attr': {'class': 'form-group col-lg-4' } }) }}
+                {{ form_start(form, { 'action': path('edit_step', {'blogId': blogId }), 'method': 'POST', 'attr': {'class': 'form-group col-lg-4' } }) }}
 
                 {{ form_errors(form) }}
 

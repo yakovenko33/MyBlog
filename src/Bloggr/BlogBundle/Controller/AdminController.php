@@ -13,6 +13,7 @@ use Bloggr\BlogBundle\Form\EditType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\FormError;
 
 class AdminController extends Controller
 {
@@ -21,10 +22,7 @@ class AdminController extends Controller
      */
     public function AdminAction(Request $request)
     {
-
-        return $this->render('BlogBundle:Admin:main.html.twig', array(
-
-        ));
+        return $this->render('BlogBundle:Admin:main.html.twig', array());
     }
 
     /**
@@ -47,7 +45,6 @@ class AdminController extends Controller
 
         }
 
-
         return $this->render('BlogBundle:Admin:addnews.html.twig', array(
             'form' => $form->createView(),
         ));
@@ -67,15 +64,11 @@ class AdminController extends Controller
         if ($formDeleted->isSubmitted() && $formDeleted->isValid()) {
             $formDeleted->getData();
 
-
             /*$entityManager = $this->getDoctrine()->getManager();
             $checkBlog = $entityManager->getRepository(Blog::class)->findOneBy(array('title' => $blog->getTitle()));*/
 
-
             $repository = $this->getDoctrine()->getRepository(Blog::class);
             $checkBlog = $repository->findOneBy(array('title' => $blog->getTitle()));
-
-
 
             $em = $this->getDoctrine()->getManager();
             $em->remove($checkBlog);
@@ -89,105 +82,69 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/admin/edit", name="admin_edit")
+     * @Route("/admin/search", name="admin_edit")
      */
     public function SearchAction(Request $request)
     {
 
         $blog = new Blog;
 
-        $formSerch = $this->createForm(EditType::class, $blog);
-        $formSerch->handleRequest($request);
+        $formSearch =  $form = $this->createFormBuilder($blog)
+            ->add('title', TextType::class)->getForm();
 
+        $formSearch->handleRequest($request);
 
+            if ($formSearch->isSubmitted() && $formSearch->isValid()) {
+                $formSearch->getData();
 
-
-            if ($formSerch->isSubmitted() && $formSerch->isValid()) {
-                $formSerch->getData();
-
-
-
-                /*$repository = $this->getDoctrine()->getRepository(Blog::class);
-                        $checkBlog = $repository->findOneBy(array('title' => $blog->getTitle()));
-
-                        $formEdit = $form = $this->createFormBuilder($blog)
-                            ->add('title',TextType::class, array(
-                                'data' => $checkBlog->getTitle(),
-                            ))
-                            ->add('author',TextType::class, array(
-                                'data' => $checkBlog->getAuthor(),
-                            ))
-                            ->add('blog',TextareaType::class, array(
-                                'data' => $checkBlog->getBlog(),
-                            ))
-                            ->add('image',TextType::class, array(
-                                'data' => $checkBlog->getImage(),
-                            ))
-                            ->add('tags',TextType::class, array(
-                                'data' => $checkBlog->getTags(),
-                            ))->getForm();
-
-                        $formEdit->handleRequest($request);
-
-                        if ($formEdit->isSubmitted() &&  $formEdit->isValid()) {
-                            $formEdit->getData();
-
-                            $em = $this->getDoctrine()->getManager();
-                            $em->remove($checkBlog);
-                            $em->flush();
-                        }*/
-
-                /*return $this->render('BlogBundle:Admin:edit.html.twig', array(
-                    'form' => $formEdit->createView(),
-                ));*/
-
-            }
-
-        $post_data = $request->get('title' );
-
-
-
-            if(!is_null($blog->getTitle())){
                 $repository = $this->getDoctrine()->getRepository(Blog::class);
                 $checkBlog = $repository->findOneBy(array('title' => $blog->getTitle()));
 
-                $formEdit = $form = $this->createFormBuilder($blog)
-                    ->add('title',TextType::class, array(
-                        'data' => $checkBlog->getTitle(),
-                    ))
-                    ->add('author',TextType::class, array(
-                        'data' => $checkBlog->getAuthor(),
-                    ))
-                    ->add('blog',TextareaType::class, array(
-                        'data' => $checkBlog->getBlog(),
-                    ))
-                    ->add('image',TextType::class, array(
-                        'data' => $checkBlog->getImage(),
-                    ))
-                    ->add('tags',TextType::class, array(
-                        'data' => $checkBlog->getTags(),
-                    ))->getForm();
-
-                $formEdit->handleRequest($request);
-
-                if ($formEdit->isSubmitted() &&  $formEdit->isValid()) {
-                    $formEdit->getData();
-
-                    $em = $this->getDoctrine()->getManager();
-                    $em->remove($checkBlog);
-                    $em->flush();
+                if(is_null($checkBlog)){
+                    $formSearch->addError(new FormError('Blog entry does not exists'));
+                    return $this->render('BlogBundle:Admin:search.html.twig', array(
+                        'form' => $formSearch->createView(),
+                    ));
                 }
 
-                return $this->render('BlogBundle:Admin:edit.html.twig', array(
-                    'form' => $formEdit->createView(),
-                ));
+                $url = $this->generateUrl('edit_step', ['blogId' =>  $checkBlog->getId()]);
+                return $this->redirect($url);
+
             }
 
 
-
-
         return $this->render('BlogBundle:Admin:search.html.twig', array(
-            'form' => $formSerch->createView(),
+            'form' => $formSearch->createView(),
+        ));
+    }
+
+    /**
+     *  @Route("/admin/edit/{blogId}", name="edit_step")
+     */
+    public function EditAction(Request $request, $blogId)
+    {
+        $blog = new Blog;
+        $blogId = (int)$blogId;
+
+        $repository = $this->getDoctrine()->getRepository(Blog::class);
+        $article = $repository->find($blogId);
+
+        $formEdit = $this->createForm(EditType::class, $article);
+        $formEdit->handleRequest($request);
+
+        if ($formEdit->isSubmitted() && $formEdit->isValid()) {
+             $formEdit->getData();
+
+
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($article);
+            $entityManager->flush();
+        }
+
+        return $this->render('BlogBundle:Admin:edit.html.twig', array(
+            'form' => $formEdit->createView(),
+            'blogId' => $blogId
         ));
     }
 
