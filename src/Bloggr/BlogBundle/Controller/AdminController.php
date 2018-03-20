@@ -22,6 +22,17 @@ class AdminController extends Controller
      */
     public function AdminAction(Request $request)
     {
+        /*$repository = $this->getDoctrine()
+            ->getRepository(Blog::class);
+
+        $articles = $repository->getAllPosts();
+
+        foreach($articles as $article){
+            var_dump($article);
+            echo "<br/>";
+        }
+        exit;*/
+
         return $this->render('BlogBundle:Admin:main.html.twig', array());
     }
 

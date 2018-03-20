@@ -8,23 +8,36 @@ use Bloggr\BlogBundle\Entity\Blog;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
 
 class BlogController extends Controller
 {
     /**
      * @Route("/Blog", name="blog")
      */
-    public function AboutAction()
+    public function AboutAction(Request $request)
     {
         $repository = $this->getDoctrine()
             ->getRepository(Blog::class);
+
+        //$product = $repository->findAll();
 
         $blogs = $repository->createQueryBuilder('b')
             ->addOrderBy('b.created', 'DESC')
             ->getQuery()
             ->getResult();
 
-        return $this->render('BlogBundle:Blog:blog.html.twig', array( 'blogs' => $blogs
+        $paginator  = $this->get('knp_paginator');
+
+        $resault = $paginator->paginate(
+            $blogs, /* query NOT result */
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 5)
+            /*limit per page*/
+        );
+
+
+        return $this->render('BlogBundle:Blog:blog.html.twig', array( 'blogs' => $resault
 
         ));
     }

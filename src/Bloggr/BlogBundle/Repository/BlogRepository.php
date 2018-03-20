@@ -2,6 +2,7 @@
 
 namespace Bloggr\BlogBundle\Repository;
 
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\ORM\EntityRepository;
 
 /**
@@ -12,4 +13,25 @@ use Doctrine\ORM\EntityRepository;
  */
 class BlogRepository extends EntityRepository
 {
+    public function getAllPosts($currentPage = 1)
+    {
+        $query = $this->createQueryBuilder('p')
+            ->orderBy('p.created', 'DESC')
+            ->getQuery();
+
+        $paginator = $this->paginate($query,$currentPage);
+
+        return $paginator;
+    }
+
+    public function paginate($dql, $page = 1, $limit = 6)
+    {
+        $paginator = new Paginator($dql);
+
+        $paginator->getQuery()
+            ->setFirstResult($limit * ($page - 1)) // Offset
+            ->setMaxResults($limit); // Limit
+
+        return $paginator;
+    }
 }
