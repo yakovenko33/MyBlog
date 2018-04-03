@@ -10,7 +10,7 @@ class AboutController extends Controller
     /**
      * @Route("/About", name="about")
      */
-    public function AboutAction()
+    public function aboutAction()
     {
         return $this->render('BlogBundle:About:about.html.twig', array(
             // ...

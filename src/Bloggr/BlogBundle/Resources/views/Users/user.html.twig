@@ -1,0 +1,33 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<div class="container">
+    <div class="row">
+        <div class="box">
+                <hr>
+                <h2 class="intro-text text-center">Страница
+                    <strong>пользователя</strong>
+                </h2>
+                <hr>
+
+            <a class="btn btn-primary" href="{{ logout_path() }}" role="button">Exit</a>
+
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="https://cs6.pikabu.ru/images/previews_comm/2015-01_6/14226204024525.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Card title</h5>
+                    <h4>Change your  photo</h4>
+
+                    {{ form_start(form) }}
+                    {# ... #}
+                    {{ form_row(form.photo) }}
+                    {{ form_row(form.save) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    {% endblock %}

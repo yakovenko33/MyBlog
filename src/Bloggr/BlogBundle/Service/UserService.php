@@ -24,7 +24,7 @@ class UserService
        $coderPassword = $this->encoder->encodePassword($user, $user->getPassword());
        $user->setPassword( $coderPassword);
 
-       $role->setRole('ROLE_ADMIN');
+       $role->setRole('ROLE_USER');
        $user->addRole($role);
        $this->em->persist($role);
        $this->em->persist($user);

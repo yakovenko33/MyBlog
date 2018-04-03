@@ -10,7 +10,7 @@ class ContactController extends Controller
     /**
      * @Route("/Contact", name="contact")
      */
-    public function ContactAction()
+    public function contactAction()
     {
         return $this->render('BlogBundle:Contact:contact.html.twig', array(
             // ...

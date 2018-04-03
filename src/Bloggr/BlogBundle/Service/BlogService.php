@@ -6,7 +6,8 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 
 
-class BlogService{
+class BlogService
+{
 
 
     private $em;

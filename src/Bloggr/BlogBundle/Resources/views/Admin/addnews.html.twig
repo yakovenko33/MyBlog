@@ -15,6 +15,7 @@
                     <a class="btn btn-primary" href="{{ path('admin_add_news') }}" role="button">Add news</a>
                     <a class="btn btn-primary" href="{{ path('admin_deleted') }}" role="button">Delete news</a>
                     <a class="btn btn-primary" href="{{ path('admin_edit') }}" role="button">Edit news</a>
+                    <a class="btn btn-primary" href="{{ logout_path() }}" role="button">Exit</a>
                 </div>
 
                 {{ form_start(form, { 'action': path('admin_add_news'), 'method': 'POST', 'attr': {'class': 'form-group col-lg-4' } }) }}

@@ -15,7 +15,7 @@ class BlogController extends Controller
     /**
      * @Route("/Blog", name="blog")
      */
-    public function AboutAction(Request $request)
+    public function aboutAction(Request $request)
     {
         $repository = $this->getDoctrine()
             ->getRepository(Blog::class);
@@ -36,9 +36,8 @@ class BlogController extends Controller
             /*limit per page*/
         );
 
-
-        return $this->render('BlogBundle:Blog:blog.html.twig', array( 'blogs' => $resault
-
+        return $this->render('BlogBundle:Blog:blog.html.twig',
+            array( 'blogs' => $resault
         ));
     }
 
@@ -46,7 +45,7 @@ class BlogController extends Controller
      *
      * @Route("/Blog/{id}", name="article")
      */
-    public function ArticleAction($id)
+    public function articleAction($id)
     {
         $em = $this->getDoctrine()->getManager();
         $blog = $em->getRepository(Blog::class)->find($id);
@@ -54,8 +53,6 @@ class BlogController extends Controller
         if (!$blog) {
             throw $this->createNotFoundException('Unable to find Blog post.');
         }
-
-
 
         return $this->render('BlogBundle:Blog:article.html.twig', array( 'blog'  => $blog,
             // ...

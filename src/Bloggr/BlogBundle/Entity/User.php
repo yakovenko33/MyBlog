@@ -52,6 +52,14 @@ class User implements UserInterface
     private $salt;
 
     /**
+     * @ORM\Column(type="string")
+     *
+     * @@ORM\Assert\NotBlank(message="Please, upload the you photo as a jpg file.")
+     * @@ORM\Assert\File( maxSize = "1024k", mimeTypes={ "application/jpg" })
+     */
+    private $photo;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -185,6 +193,18 @@ class User implements UserInterface
     public function getSalt()
     {
         return $this->salt;
+    }
+
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    public function getPhoto()
+    {
+        return $this->photo;
     }
 
     /**

@@ -20,19 +20,8 @@ class AdminController extends Controller
     /**
      * @Route("/admin", name="admin")
      */
-    public function AdminAction(Request $request)
+    public function adminAction(Request $request)
     {
-        /*$repository = $this->getDoctrine()
-            ->getRepository(Blog::class);
-
-        $articles = $repository->getAllPosts();
-
-        foreach($articles as $article){
-            var_dump($article);
-            echo "<br/>";
-        }
-        exit;*/
-
         return $this->render('BlogBundle:Admin:main.html.twig', array());
     }
 
@@ -40,7 +29,7 @@ class AdminController extends Controller
      * @Route("/admin/add_news", name="admin_add_news")
      */
 
-    public function AddNewsAction(Request $request)
+    public function addNewsAction(Request $request)
     {
         $blog = new Blog;
 
@@ -64,9 +53,8 @@ class AdminController extends Controller
     /**
      * @Route("/admin/deleted", name="admin_deleted")
      */
-    public function DeletedAction(Request $request)
+    public function deletedAction(Request $request)
     {
-
         $blog = new Blog;
 
         $formDeleted = $this->createForm(DeletedType::class, $blog);
@@ -95,9 +83,8 @@ class AdminController extends Controller
     /**
      * @Route("/admin/search", name="admin_edit")
      */
-    public function SearchAction(Request $request)
+    public function searchAction(Request $request)
     {
-
         $blog = new Blog;
 
         $formSearch =  $form = $this->createFormBuilder($blog)
@@ -111,7 +98,7 @@ class AdminController extends Controller
                 $repository = $this->getDoctrine()->getRepository(Blog::class);
                 $checkBlog = $repository->findOneBy(array('title' => $blog->getTitle()));
 
-                if(is_null($checkBlog)){
+                if(is_null($checkBlog)) {
                     $formSearch->addError(new FormError('Blog entry does not exists'));
                     return $this->render('BlogBundle:Admin:search.html.twig', array(
                         'form' => $formSearch->createView(),
@@ -120,9 +107,7 @@ class AdminController extends Controller
 
                 $url = $this->generateUrl('edit_step', ['blogId' =>  $checkBlog->getId()]);
                 return $this->redirect($url);
-
             }
-
 
         return $this->render('BlogBundle:Admin:search.html.twig', array(
             'form' => $formSearch->createView(),
@@ -132,7 +117,7 @@ class AdminController extends Controller
     /**
      *  @Route("/admin/edit/{blogId}", name="edit_step")
      */
-    public function EditAction(Request $request, $blogId)
+    public function editAction(Request $request, $blogId)
     {
         $blog = new Blog;
         $blogId = (int)$blogId;
