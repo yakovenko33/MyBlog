@@ -2,26 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b9ca271-3caf-4680-8045-d0ef2a12a79a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Resources/views/Users/admin.html.twig" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/security.yml" afterPath="$PROJECT_DIR$/app/config/security.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/AboutController.php" afterPath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/AboutController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/AdminController.php" afterPath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/AdminController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/BlogController.php" afterPath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/BlogController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/ContactController.php" afterPath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/ContactController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/LoginController.php" afterPath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/LoginController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/UsersController.php" afterPath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/UsersController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Entity/User.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Form/UserType.php" afterPath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Form/UserType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Resources/views/Admin/addnews.html.twig" afterPath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Resources/views/Admin/addnews.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Resources/views/Admin/deleted.html.twig" afterPath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Resources/views/Admin/deleted.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Resources/views/Admin/edit.html.twig" afterPath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Resources/views/Admin/edit.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Resources/views/Admin/main.html.twig" afterPath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Resources/views/Admin/main.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Resources/views/Admin/search.html.twig" afterPath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Resources/views/Admin/search.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Resources/views/Contact/contact.html.twig" afterPath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Resources/views/Contact/contact.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Service/BlogService.php" afterPath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Service/BlogService.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Service/UserService.php" afterPath="$PROJECT_DIR$/src/Bloggr/BlogBundle/Service/UserService.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,8 +19,8 @@
       <file leaf-file-name="UsersController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/UsersController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="37" column="39" lean-forward="true" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
+            <state relative-caret-position="323">
+              <caret line="37" column="12" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="40" selection-end-column="36" />
               <folding>
                 <element signature="e#48#105#0#PHP" expanded="true" />
               </folding>
@@ -45,11 +28,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Blog.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Bloggr/BlogBundle/Entity/Blog.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="850">
+              <caret line="95" column="20" lean-forward="false" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Bloggr/BlogBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="598">
-              <caret line="82" column="7" lean-forward="false" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
+            <state relative-caret-position="275">
+              <caret line="277" column="32" lean-forward="false" selection-start-line="277" selection-start-column="20" selection-end-line="277" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -78,21 +71,11 @@
       <file leaf-file-name="LoginController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/LoginController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="850">
+            <state relative-caret-position="17">
               <caret line="58" column="33" lean-forward="false" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
               <folding>
                 <element signature="e#48#85#0#PHP" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AboutController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/AboutController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="12" column="21" lean-forward="false" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -181,7 +164,6 @@
         <option value="$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/BlogController.php" />
         <option value="$PROJECT_DIR$/app/config/security.yml" />
         <option value="$PROJECT_DIR$/src/Bloggr/BlogBundle/Form/CheckType.php" />
-        <option value="$PROJECT_DIR$/src/Bloggr/BlogBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Bloggr/BlogBundle/Resources/views/Users/user.html.twig" />
         <option value="$PROJECT_DIR$/src/Bloggr/BlogBundle/Form/UserType.php" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
@@ -189,6 +171,7 @@
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/AdminController.php" />
         <option value="$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/LoginController.php" />
+        <option value="$PROJECT_DIR$/src/Bloggr/BlogBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/UsersController.php" />
       </list>
     </option>
@@ -630,15 +613,15 @@
       <workItem from="1522591920934" duration="1369000" />
       <workItem from="1522680649629" duration="51000" />
       <workItem from="1522702580636" duration="1687000" />
-      <workItem from="1522738179440" duration="2112000" />
+      <workItem from="1522738179440" duration="4176000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207273000" />
+    <option name="totallyTimeSpent" value="209337000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25768667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -798,13 +781,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bloggr/BlogBundle/Entity/Blog.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1615">
-          <caret line="95" column="20" lean-forward="false" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -975,28 +951,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/LoginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="58" column="33" lean-forward="false" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
-          <folding>
-            <element signature="e#48#85#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Bloggr/BlogBundle/Form/CheckType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="58" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Bloggr/BlogBundle/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="598">
-          <caret line="82" column="7" lean-forward="false" selection-start-line="82" selection-start-column="7" selection-end-line="82" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -1009,10 +967,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bloggr/BlogBundle/Entity/Blog.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="850">
+          <caret line="95" column="20" lean-forward="false" selection-start-line="95" selection-start-column="20" selection-end-line="95" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bloggr/BlogBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="277" column="32" lean-forward="false" selection-start-line="277" selection-start-column="20" selection-end-line="277" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="58" column="33" lean-forward="false" selection-start-line="58" selection-start-column="33" selection-end-line="58" selection-end-column="33" />
+          <folding>
+            <element signature="e#48#85#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Bloggr/BlogBundle/Controller/UsersController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="37" column="39" lean-forward="true" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
+        <state relative-caret-position="323">
+          <caret line="37" column="12" lean-forward="true" selection-start-line="37" selection-start-column="12" selection-end-line="40" selection-end-column="36" />
           <folding>
             <element signature="e#48#105#0#PHP" expanded="true" />
           </folding>

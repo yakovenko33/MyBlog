@@ -85,6 +85,13 @@ class User implements UserInterface
 
     private $role;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo_name", type="string", length=80)
+     */
+    private $photoName;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -266,5 +273,17 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         ;
+    }
+
+    public function setPhotoName($photoName)
+    {
+        $this->photoName =  $photoName;
+
+        return $this;
+    }
+
+    public function getPhotoName()
+    {
+        return $this->photoName;
     }
 }

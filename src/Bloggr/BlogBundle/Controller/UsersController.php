@@ -18,6 +18,7 @@ class UsersController extends Controller
     public function usersAction(Request $request)
     {
         $user = $this->getUser();
+        $entityManager = $this->getDoctrine()->getManager();
 //        print_r($user->getUsername());  // получение  объекта
 //        exit;
 //        $user = new User();
@@ -34,9 +35,8 @@ class UsersController extends Controller
                 $fileName
             );
 
-
-            $user->setPhoto($fileName);
-            $entityManager = $this->getDoctrine()->getManager();
+            $user->setPhoto(null);
+            $user->setPhotoName($fileName);
             $entityManager->persist($user);
             $entityManager->flush();
 
