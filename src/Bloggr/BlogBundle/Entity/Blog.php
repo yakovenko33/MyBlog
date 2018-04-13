@@ -2,6 +2,7 @@
 
 namespace Bloggr\BlogBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 //use Symfony\Component\Validator\Constraints\Null;
 
@@ -64,7 +65,18 @@ class Blog
      */
     private $created;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Comments", mappedBy="article")
+     */
     private $comment;
+
+    /**
+     * @return mixed
+     */
+    public function __construct()
+    {
+        $this->comment = new ArrayCollection();
+    }
     /**
      * Get id
      *
@@ -214,5 +226,17 @@ class Blog
     public function getCreated()
     {
         return $this->created;
+    }
+
+    public function setComment(Comments $comment)
+    {
+        $this->comment->add($comment);
+
+        return $this;
+    }
+
+    public function getComment()
+    {
+        return  $this->comment;
     }
 }

@@ -13,6 +13,55 @@
                     <p>{{ blog.blog}}</p>
                     <hr>
                 </div>
+
+                <div class="container-fluid">
+                    <div class="container">
+                        <div class="row-6 text-center">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detailBox">
+                <div class="titleBox">
+                    <label>Коментарии</label>
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                </div>
+                <div class="actionBox">
+                    <ul class="commentList">
+                        {% for comment in comments %}
+                        <li>
+
+                            <div>
+                                <img height="45" width="45"  src="img/slide-1.jpg" />
+                            </div>
+                            <div class="commentText">
+
+                            </div>
+                            <div class="commentText">
+                                <p class=""><h4>Name</h4></p>
+                                <p class="">{{ comment.comment }}</p> <span class="date sub-text">{{ blog.created|date('l, F j, Y') }}</span>
+                            </div>
+
+                        </li>
+                        {% endfor %}
+                    </ul>
+
+                    {{ form_start(form, { 'action': path('article',{'id': blog.id}), 'method': 'POST', 'attr': {'class': 'form-inline' } }) }}
+
+                    {{ form_errors(form) }}
+
+                    {{ form_row(form.comment , {'attr': {'class': 'form-control'}}) }}
+
+                    {{ form_rest(form) }}
+
+                    <button class="btn btn-default">Add</button>
+
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+
             </div>
         </div>
     </div>

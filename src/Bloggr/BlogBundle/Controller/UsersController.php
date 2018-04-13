@@ -43,8 +43,11 @@ class UsersController extends Controller
             return $this->redirect($this->generateUrl('users'));
         }
 
+        $foto = $user->getPhotoName();
+
         return $this->render('BlogBundle:Users:user.html.twig', array(
             'form' => $form->createView(),
+            'foto' => $foto,
         ));
     }
 

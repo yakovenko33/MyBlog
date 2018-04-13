@@ -2,6 +2,7 @@
 
 namespace Bloggr\BlogBundle\Controller;
 
+use Bloggr\BlogBundle\Entity\Comments;
 use Bloggr\BlogBundle\Service;
 use Bloggr\BlogBundle\Service\BlogService;
 use Bloggr\BlogBundle\Entity\Blog;
@@ -9,6 +10,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Bloggr\BlogBundle\Form\CommentType;
+
 
 class BlogController extends Controller
 {
@@ -45,7 +48,7 @@ class BlogController extends Controller
      *
      * @Route("/Blog/{id}", name="article")
      */
-    public function articleAction($id)
+    public function articleAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
         $blog = $em->getRepository(Blog::class)->find($id);
@@ -54,8 +57,34 @@ class BlogController extends Controller
             throw $this->createNotFoundException('Unable to find Blog post.');
         }
 
-        return $this->render('BlogBundle:Blog:article.html.twig', array( 'blog'  => $blog,
-            // ...
+        $user = $this->getUser();
+        $comment = new Comments();
+
+        $form = $this->createForm(CommentType::class,  $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $comment = $form->getData();
+
+            $comment->setUser($user);
+            $comment->setArticle($blog);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($comment);
+
+            $entityManager->flush();
+        }
+
+        //$comments  = $em->getRepository(Comments::class)->findAll();
+
+        $comments = $em->getRepository(Comments::class)->findBy(
+            array('article' => $id)
+        );
+
+        return $this->render('BlogBundle:Blog:article.html.twig', array(
+            'blog'  => $blog,
+            'form' => $form->createView(),
+            'comments' => $comments
         ));
     }
 }
