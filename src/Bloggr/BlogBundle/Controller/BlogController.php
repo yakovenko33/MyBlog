@@ -75,11 +75,15 @@ class BlogController extends Controller
             $entityManager->flush();
         }
 
-        //$comments  = $em->getRepository(Comments::class)->findAll();
-
         $comments = $em->getRepository(Comments::class)->findBy(
             array('article' => $id)
         );
+
+
+//        foreach($comments as $comment){
+//            print_r($comment->getUser()->getUsername());
+//        }
+//        exit;
 
         return $this->render('BlogBundle:Blog:article.html.twig', array(
             'blog'  => $blog,

@@ -11,6 +11,7 @@ body {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+
 }
 
 h1,
@@ -109,11 +110,14 @@ hr {
 footer {
     background: #fff;
     background: rgba(255,255,255,0.9);
+
+
 }
 
 footer p {
     margin: 0;
     padding: 50px 0;
+
 }
 
 @media screen and (min-width:768px) {
@@ -263,3 +267,4 @@ footer p {
     border-top:1px dotted #bbb;
     padding:10px;
 }
+
